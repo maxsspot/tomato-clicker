@@ -108,7 +108,7 @@ button:hover {
                 }
                 
                 localStorage.setItem ("score",saved_score);
-                var score = localStorage.setItem ("score_text",saved_score);
+                var score = localStorage.setItem ("score_text",saved_text);
                 // Increase score
                 function up () {
                     clicks++;
@@ -117,8 +117,8 @@ button:hover {
                         clicks = 0;
                     }
                     score_text.innerHTML = score++;
-                    localStorage.setItem ("score",score);
-                    localStorage.setItem ("score_text",score);
+                    localStorage.setItem ("score",saved_score);
+                    localStorage.setItem ("score_text",saved_text);
                 }
 
                 // Automatic Clicks
