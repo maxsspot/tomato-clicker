@@ -102,13 +102,13 @@ button:hover {
                 var clicks = 0;
                 var score_text = document.getElementById ("score");
                 var coins_text = document.getElementById ("coins");
-                var saved_score = localStorage.getItem ("score");
+                var saved_score = score;
                 var saved_text = localStorage.getItem ("score_text");
                 var power = document.getElementById("auto");
                 }
                 
-                localStorage.setItem ("score",score);
-                localStorage.setItem ("score_text",score);
+                localStorage.setItem ("score",saved_score);
+                var score = localStorage.setItem ("score_text",saved_score);
                 // Increase score
                 function up () {
                     clicks++;
