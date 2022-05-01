@@ -103,14 +103,9 @@ button:hover {
                 var score_text = document.getElementById ("score");
                 var coins_text = document.getElementById ("coins");
                 var power = document.getElementById("auto");
-                
-            
-               
-                    var score_text = localStorage.getItem ("score");
-                    
                 }
                 
-                
+                localStorage.setItem ("score_text",score);
                 // Increase score
                 function up () {
                     clicks++;
@@ -287,7 +282,9 @@ button:hover {
                         })
                 }
             
-                
+            setInterval(function(){ 
+                    var score_text = localStorage.getItem ("score");
+            }, 1000);
         </script>
     </body>
 </html>
