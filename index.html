@@ -98,7 +98,7 @@ button:hover {
             
                 {
                 var coins = 0;
-                var score = 0;
+                var score = localStorage.getItem ("score");
                 var clicks = 0;
                 var score_text = document.getElementById ("score");
                 var coins_text = document.getElementById ("coins");
@@ -113,6 +113,7 @@ button:hover {
                         clicks = 0;
                     }
                     score_text.innerHTML = score++;
+                    localStorage.setItem ("score",score);
                 }
 
                 // Automatic Clicks
@@ -280,11 +281,7 @@ button:hover {
                         })
                 }
             
-                setInterval(function() {
-                if (location.href != "index.html") {
-                  location.href = "index.html"; 
-                }
-                  }, 1);
+                
         </script>
     </body>
 </html>
