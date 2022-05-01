@@ -105,8 +105,8 @@ button:hover {
                 var power = document.getElementById("auto");
                 }
             
-                if (localStorage.setItem ("score_text",score_text)) {
-                    score_text = localStorage.setItem ("score_text",score_text");
+                if (localStorage.setItem ("score_text",score)) {
+                    score_text = localStorage.setItem ("score_text",score");
                 }
                 
                 // Increase score
@@ -118,7 +118,7 @@ button:hover {
                     }
                     score_text.innerHTML = score++;
                     localStorage.setItem ("score",score);
-                    localStorage.setItem ("score_text", score_text);
+                    localStorage.setItem ("score_text", score);
                 }
 
                 // Automatic Clicks
