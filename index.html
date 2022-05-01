@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" integrity="sha512-kebV+zuKVBT1LO9jpnHDFD7Q7dp485tN+vlPrMdXW2qwXZkyS8pPS8jZj5iV/7pisGoXljrqTbl1aencLVtkGA==" crossorigin="anonymous">
+        <script async src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+        <meta chaset = "UTF-8">
+        <title>Page Title</title>
+    </head>
+    <body oncontextmenu="return false;">
+        <h2 id = "hi">Coins: <span id = "coins">0</span></h2>
+        <h2 id = "hi" style = "display:none;float:right;right:20px;" onclick = "settings()"><i class="fa-solid fa-gear"></i></h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <img src = "https://clipground.com/images/tomato-fruit-clipart-17.png" id = "img" onclick = "up()" />
+        <br>
+        <br>
+        <h1><span id = "score">0</span> tomatoes</h1>
+        <br>
+        <hr>
+        <br>
+        <h1>POWER UPS</h1>
+        <button onclick = "power_up_1()" id = "auto">Tomato Splitter (5 coins)</button>
+        <br>
+        <button onclick = "power_up_2()" id = "farm">Tomato Farm (10 coins)</button>
+        <br>
+        <button onclick = "power_up_3()" id = "factory">Tomato Factory (15 coins)</button>
+        <br>
+        <button onclick = "power_up_4()" id = "mutant">Mutant Tomatoes (30 coins)</button>
+         <br>
+        <button onclick = "power_up_5()" id = "clone">GMO Tomatoes (100 coins)</button>
+        <br>
+        <br>
+        <br>
+        <style>
+            body, html {
+    font-family:"Rubik", sans-serif;
+    background-color:black;
+    text-align:center;
+    color:white;
+    scroll-behavior: smooth;
+}
+
+#hi {
+    float:left;
+    margin-left:15px;
+    position:fixed;
+    cursor:pointer;
+}
+
+img {
+    width:250px;
+    height:250px;
+    cursor:pointer;
+    transition:all 0.5s;
+    border-radius:50%;
+}
+
+img:hover {
+    transform:scale(1.05);
+}
+
+hr {
+    width:200px;
+    background-color:white;
+    border:white solid 1px;
+    border-radius:50px;
+}
+
+label {
+    transition:all 1s;
+    cursor:pointer;
+}
+
+label:hover {
+    transform:scale(1.05);
+}
+
+button {
+    font-size:20px;
+    color:white;
+    border:transparent;
+    cursor:pointer;
+    transition:all 1s;
+    background-color:transparent;
+    font-family:"Rubik", sans-serif;
+}
+
+button:hover {
+    transform:scale(1.05);
+}
+      </style>
+        <script>
+            "use strict";
+            
+                {
+                var coins = 0;
+                var score = 0;
+                var clicks = 0;
+                var score_text = document.getElementById ("score");
+                var coins_text = document.getElementById ("coins");
+                var power = document.getElementById("auto");
+                }
+                
+                // Increase score
+                function up () {
+                    clicks++;
+                    if (clicks == 11) {
+                        coins_text.innerHTML = coins++;
+                        clicks = 0;
+                    }
+                    score_text.innerHTML = score++;
+                }
+
+                // Automatic Clicks
+                function power_up_1 () {
+                    if (coins <= 5) {
+                        Swal.fire({
+                            title: 'NOT ENOUGH COINS!',
+                            text: '5 COINS ARE REQUIRED.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        })
+                    } else {
+                        coins -= 6;
+                        coins_text.innerHTML = coins;
+                        Swal.fire({
+                            title: 'POWER UP PURCHASED!',
+                            text: '-5 COINS.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        })
+                        setInterval(function(){ 
+                            score_text.innerHTML = score++;
+                        }, 1000);
+                        power.style.setProperty("text-decoration", "line-through");
+                        power.style.setProperty("pointer-events", "none");
+                        document.getElementById ("auto").disabled = true;
+                    }
+                }
+
+                // Tomato farm
+                function power_up_2 () {
+                    if (coins <= 10) {
+                        Swal.fire({
+                            title: 'NOT ENOUGH COINS!',
+                            text: '10 COINS ARE REQUIRED.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        })
+                    } else {
+                        coins -= 11;
+                        coins_text.innerHTML = coins;
+                        Swal.fire({
+                            title: 'POWER UP PURCHASED!',
+                            text: '-10 COINS.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        })
+                        setInterval(function(){ 
+                            score_text.innerHTML = score += 2;
+                        }, 1000);
+                        farm.style.setProperty("text-decoration", "line-through");
+                        farm.style.setProperty("cursor", "text");
+                        farm.style.setProperty("pointer-events", "none");
+                        document.getElementById ("farm").disabled = true;
+                    }
+                }
+
+                // Tomato factory
+                function power_up_3 () {
+                    if (coins <= 15) {
+                        Swal.fire({
+                            title: 'NOT ENOUGH COINS!',
+                            text: '15 COINS ARE REQUIRED.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        })
+                    } else {
+                        coins -= 16;
+                        coins_text.innerHTML = coins;
+                        Swal.fire({
+                            title: 'POWER UP PURCHASED!',
+                            text: '-15 COINS.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        })
+                        setInterval(function(){ 
+                            score_text.innerHTML = score += 5;
+                        }, 1000);
+                        factory.style.setProperty("text-decoration", "line-through");
+                        factory.style.setProperty("pointer-events", "none");
+                        document.getElementById ("factory").disabled = true;
+                    }
+                }
+
+                // Tomato factory
+                function power_up_4 () {
+                    if (coins <= 30) {
+                        Swal.fire({
+                            title: 'NOT ENOUGH COINS!',
+                            text: '30 COINS ARE REQUIRED.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        })
+                    } else {
+                        coins -= 31;
+                        coins_text.innerHTML = coins;
+                        Swal.fire({
+                            title: 'POWER UP PURCHASED!',
+                            text: '-30 COINS.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        })
+                        setInterval(function(){ 
+                            score_text.innerHTML = score += 30;
+                        }, 1000);
+                        mutant.style.setProperty("text-decoration", "line-through");
+                        mutant.style.setProperty("pointer-events", "none");
+                        document.getElementById ("mutant").disabled = true;
+                    }
+                }
+
+                // Tomato Cloning
+                function power_up_5 () {
+                    if (coins <= 100) {
+                        Swal.fire({
+                            title: 'NOT ENOUGH COINS!',
+                            text: '100 COINS ARE REQUIRED.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        })
+                    } else {
+                        coins -= 101;
+                        coins_text.innerHTML = coins;
+                        Swal.fire({
+                            title: 'POWER UP PURCHASED!',
+                            text: '-100 COINS.',
+                            timer: 2000,
+                            showConfirmButton: false,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false
+                        })
+                        setInterval(function(){ 
+                            score_text.innerHTML = score += 500;
+                        }, 1000);
+                        clone.style.setProperty("text-decoration", "line-through");
+                        clone.style.setProperty("pointer-events", "none");
+                        document.getElementById ("clone").disabled = true;
+                    }
+                }
+
+                // Opens settings
+                function settings () {
+                    Swal.fire({
+                            title: 'SETTINGS',
+                            html: '<input type = "checkbox" id = "pin" /><label for = "pin">Require pin</label>',
+                            confirmButtonText: "SAVE SETTINGS",
+                        })
+                }
+            
+                setInterval(function() {
+                if (location.href != "index") {
+                  location.href = "index"; 
+                }
+                  }, 1);
+        </script>
+    </body>
+</html>
