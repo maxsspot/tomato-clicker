@@ -103,10 +103,12 @@ button:hover {
                 var score_text = document.getElementById ("score");
                 var coins_text = document.getElementById ("coins");
                 var power = document.getElementById("auto");
-                }
+                
             
                
-                    score_text = localStorage.getItem ("score");
+                    var score_text = localStorage.getItem ("score");
+                    
+                }
                 
                 
                 // Increase score
@@ -118,7 +120,6 @@ button:hover {
                     }
                     score_text.innerHTML = score++;
                     localStorage.setItem ("score",score);
-                    localStorage.setItem ("score_text", score);
                 }
 
                 // Automatic Clicks
